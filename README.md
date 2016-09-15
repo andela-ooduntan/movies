@@ -1,1 +1,1 @@
-# Movie — A movie directory app
+# MovIT — A movie directory app
