@@ -1,0 +1,66 @@
+doctype html
+
+html(lang="en" ng-app="movieApp" class="no-js")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title Movies App
+    meta(name="description" content="")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css")
+    link(rel="stylesheet" href="app.css")
+    script(src="bower_components/jquery/dist/jquery.min.js")
+  body
+    .container
+      ul(class="menu")
+        li Home
+        li About
+        li Contact
+
+      .center-block.col-md-6(ng-controller="MoviesCtrl")
+        form(ng-submit="addMovie()" class="container")
+          .form-group
+            label(for="movieTitle") Movie Title
+            input(type="text" class="form-control" id="movieTitle" ng-model="title" placeholder="Movie Title")
+          .form-group
+            label(for="director") Director
+            input(type="text" class="form-control" ng-model="director" id="director" placeholder="Director")
+          .form-group
+            label(for="director") Year
+            input(type="text" class="form-control" ng-model="year" id="year" placeholder="Year")
+          .loader.pull-right(ng-show="loader")
+          button(type="submit" class="btn btn-default pull-left") Submit
+          .small.pull-left.text-success {{saveResult}}
+        h2 List of Movies
+        div(class="table-responsive")
+          table(class="table table-bordered")
+            thead
+              td #
+              td Title
+              td Director
+              td Year
+              td Delete
+              td Edit
+            tr(ng-repeat="movie in movieList")
+              td {{$index + 1}}
+              td
+                input(type="text" value="{{movie.title}}" )
+                span {{movie.title}}
+              td {{movie.director}}
+              td {{movie.year}}
+              td
+                button(class="btn btn-danger" ng-click="deleteMovie($index)" ng-show="!deleting") Delete
+                .loader(ng-show="deleting")
+              td
+                button(class="btn btn-info" ng-click="editMovie($index)" ng-show="!editing") Edit
+                .loader(ng-show="editing")
+
+
+  script(src="bower_components/angular/angular.js")
+  script(src="bower_components/angular-resource/angular-resource.js")
+  script(src="app.js")
+  script(src="service/movieService.js" type="text/javascript")
+  script(src="controller/main.js")
+
+
+
