@@ -8,7 +8,7 @@
     morgan = require('morgan');
 
   app.use(morgan('dev'));
-  app.use(bodyParser.json())
+  app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: false}));
   app.use(apiRoutes);
   app.set('view engine', 'jade');

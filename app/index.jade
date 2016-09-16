@@ -44,7 +44,7 @@ html(lang="en" ng-app="movieApp" class="no-js")
             tr(ng-repeat="movie in movieList")
               td {{$index + 1}}
               td
-                input(type="text" value="{{movie.title}}" )
+                input(type="text" value="{{movie.title}}" ng-show="")
                 span {{movie.title}}
               td {{movie.director}}
               td {{movie.year}}
